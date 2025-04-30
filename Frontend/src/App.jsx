@@ -1,9 +1,10 @@
 import React from 'react'
+import LandingPage from './pages/marketPlaceLanding'
 
 function App() {
   return (
     <div>
-      <p className='text-red-500'>hi</p>
+      <LandingPage/>
     </div>
   )
 }
