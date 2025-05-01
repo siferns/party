@@ -1,15 +1,15 @@
 import React from "react";
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
-// import { Card, CardContent } from "@/components/ui/card";
-// import { Switch } from "@/components/ui/switch";
 import { Button } from "../componenets/ui/Button";
 import { Input } from "../componenets/ui/input";
 import { Card ,CardContent } from "../componenets/ui/card";
 import { Switch } from "../componenets/ui/switch"; 
 import { Sparkles, ShoppingBag, PartyPopper, MapPin, Users, Clock, CalendarDays } from "lucide-react";
 
+import { useNavigate } from "react-router-dom";
+
 export default function LandingPage() {
+  
+  const navigate=useNavigate();
   const providers = [
     {
       title: "Tandoori Delights",
@@ -38,15 +38,19 @@ export default function LandingPage() {
     }
   ];
 
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 p-6">
       {/* Top Navigation */}
       <nav className="flex items-center justify-between mb-6 px-4">
         <div className="text-2xl font-bold text-blue-800">Evoo</div>
         <div className="space-x-4 text-sm">
-          <a href="#" className="text-blue-700 hover:underline">Become a Provider</a>
-          <a href="#" className="text-blue-700 hover:underline">Login</a>
-          <a href="#" className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full">Sign Up</a>
+          {/* <a href="#" className="text-blue-700 hover:underline">Become a Provider</a> */}
+          {/* <a href="/authorization" className="text-blue-700 hover:underline">Login</a> */}
+          {/* <a href="/authorization" className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full">Sign Up</a> */}
+          <p onClick={()=>navigate('/#')} className="inline-block text-blue-700 hover:underline">Become a Provider</p>
+          <p onClick={()=>navigate('/authorization')} className="inline-block text-blue-700 hover:underline">Login</p>
+          <p onClick={()=>navigate('/authorization')} className="inline-block text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full">Sign Up</p>
         </div>
       </nav>
 
@@ -107,11 +111,16 @@ export default function LandingPage() {
             </div>
             <div className="flex items-center justify-between">
               <label className="text-sm font-medium">Willing to Pick Up Food?</label>
-              <Switch />
+              <div>
+                <Switch /> 
+              </div>
             </div>
             <button
   type="button"
-  onClick={() => alert('This would take you to the Search Results page in the full app.')}
+  onClick={() => {
+    // alert('This would take you to the Search Results page in the full app.')
+    navigate('/providers')
+  }}
   className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md"
 >
   Find Providers

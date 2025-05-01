@@ -1,0 +1,154 @@
+import React, { useState } from "react";
+
+export default function TandooriDelight() {
+  const listing = {
+    title: "Tandoori Delights",
+    type: "Catering",
+    description:
+      "Authentic Indian cuisine with customizable packages for parties of 10 to 100 guests. Includes starters, mains, and desserts with vegetarian and non-vegetarian options.",
+    price: "£300 for 20 guests",
+    gallery: [
+      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=400&q=80"
+    ],
+    details: {
+      starters: [
+        { item: "Vegetable Samosas", quantity: "40 pieces" },
+        { item: "Paneer Tikka Skewers", quantity: "20 pieces" }
+      ],
+      mains: [
+        { item: "Butter Chicken", quantity: "1 tray" },
+        { item: "Chana Masala (Chickpea Curry)", quantity: "1 tray" },
+        { item: "Steamed Basmati Rice", quantity: "1 tray" },
+        { item: "Naan Bread", quantity: "40 pieces" }
+      ],
+      desserts: [
+        { item: "Gulab Jamun", quantity: "40 pieces" },
+        { item: "Mango Kulfi", quantity: "20 sticks" }
+      ],
+      allergies: "Contains dairy, nuts, and gluten.",
+      preparation: "Food is delivered hot. Reheat in oven at 180°C for 10 minutes if needed."
+    }
+  };
+
+  const [mainImage, setMainImage] = useState(listing.gallery[0]);
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <nav className="flex items-center justify-between px-6 py-4 border-b">
+        <a href="/" className="text-2xl font-bold text-blue-800">Evoo</a>
+        <div className="space-x-4 text-sm">
+          <a href="#" className="text-blue-700 hover:underline">Become a Provider</a>
+          <a href="#" className="text-blue-700 hover:underline">Login</a>
+          <a href="#" className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full">Sign Up</a>
+        </div>
+      </nav>
+
+      <div className="px-6 py-10 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="flex flex-col gap-6">
+            {/* Image Gallery */}
+            <img
+              src={mainImage}
+              alt={listing.title}
+              className="w-full h-96 object-cover rounded-2xl shadow-md"
+              onError={(e) => (e.currentTarget.src = "https://via.placeholder.com/1200x480?text=No+Image")}
+            />
+            <div className="grid grid-cols-4 gap-2">
+              {listing.gallery.map((src, idx) => (
+                <img
+                  key={idx}
+                  src={src}
+                  alt={`${listing.title} ${idx + 1}`}
+                  className={`w-full h-24 object-cover rounded-lg cursor-pointer border-2 transform transition-transform duration-300 ${mainImage === src ? 'border-blue-600' : 'border-transparent'} hover:scale-105`}
+                  onClick={() => setMainImage(src)}
+                  onError={(e) => (e.currentTarget.src = "https://via.placeholder.com/400x240?text=No+Image")}
+                />
+              ))}
+            </div>
+
+            {/* Improved Reviews Section */}
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold text-blue-800 mb-4">Customer Reviews</h3>
+              <div className="space-y-6">
+                <div className="bg-gray-50 p-4 rounded-lg shadow">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="font-semibold text-gray-800">Priya Sharma</p>
+                    <p className="text-yellow-500">★★★★★</p>
+                  </div>
+                  <p className="text-gray-700 text-sm">"Absolutely delicious! The food was delivered hot and fresh. Everyone loved the samosas and butter chicken!"</p>
+                  <p className="text-xs text-gray-500 mt-2">Birthday Party • March 2025</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg shadow">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="font-semibold text-gray-800">Ahmed Khan</p>
+                    <p className="text-yellow-500">★★★★☆</p>
+                  </div>
+                  <p className="text-gray-700 text-sm">"Great flavours and very generous portions. Would definitely recommend!"</p>
+                  <p className="text-xs text-gray-500 mt-2">Family Reunion • February 2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h1 className="text-4xl font-bold text-blue-800 mb-2">{listing.title}</h1>
+            <p className="text-sm text-gray-500 mb-2 uppercase tracking-wide">{listing.type}</p>
+            <p className="text-lg text-gray-700 mb-4 leading-relaxed">{listing.description}</p>
+            <p className="text-2xl font-semibold text-blue-700 mb-6">{listing.price}</p>
+
+            <div className="flex gap-4 mb-10">
+              <a href="/checkout" className="bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700 inline-block">
+                Send Order Request
+              </a>
+              <button className="text-blue-600 font-medium border border-blue-600 px-6 py-3 rounded-xl hover:bg-blue-50">
+                Add to Event
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6">
+              <div>
+                <h3 className="text-lg font-semibold text-blue-800 mb-2">Starters</h3>
+                <ul className="list-disc list-inside text-gray-600 space-y-1">
+                  {listing.details.starters.map((starter, idx) => (
+                    <li key={idx}>{starter.item} — {starter.quantity}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-blue-800 mb-2">Main Course</h3>
+                <ul className="list-disc list-inside text-gray-600 space-y-1">
+                  {listing.details.mains.map((main, idx) => (
+                    <li key={idx}>{main.item} — {main.quantity}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-blue-800 mb-2">Desserts</h3>
+                <ul className="list-disc list-inside text-gray-600 space-y-1">
+                  {listing.details.desserts.map((dessert, idx) => (
+                    <li key={idx}>{dessert.item} — {dessert.quantity}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-blue-800 mb-2">Allergy Info</h3>
+                <p className="text-gray-600 leading-relaxed">{listing.details.allergies}</p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-blue-800 mb-2">Preparation Instructions</h3>
+                <p className="text-gray-600 leading-relaxed">{listing.details.preparation}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
