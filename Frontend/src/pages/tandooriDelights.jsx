@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function TandooriDelight() {
-  const listing = {
+    const navigate=useNavigate();
+    const listing = {
     title: "Tandoori Delights",
     type: "Catering",
     description:
@@ -40,9 +42,9 @@ export default function TandooriDelight() {
       <nav className="flex items-center justify-between px-6 py-4 border-b">
         <a href="/" className="text-2xl font-bold text-blue-800">Evoo</a>
         <div className="space-x-4 text-sm">
-          <a href="#" className="text-blue-700 hover:underline">Become a Provider</a>
-          <a href="#" className="text-blue-700 hover:underline">Login</a>
-          <a href="#" className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full">Sign Up</a>
+            <p onClick={()=>navigate('/#')} className="inline-block text-blue-700 hover:underline">Become a Provider</p>
+            <p onClick={()=>navigate('/authorization')} className="inline-block text-blue-700 hover:underline">Login</p>
+            <p onClick={()=>navigate('/authorization')} className="inline-block text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full">Sign Up</p>
         </div>
       </nav>
 
