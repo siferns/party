@@ -14,27 +14,32 @@ export default function LandingPage() {
     {
       title: "Tandoori Delights",
       desc: "Indian cuisine packages for 10–100 guests.",
-      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80",
+      navigateTo: '/listing/tandooriDelights'
     },
     {
       title: "Moments Captured",
       desc: "Professional photography for any event size.",
-      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+      navigateTo: '/listing/Photographer'
     },
     {
       title: "DJ Sonic Boom",
       desc: "Turn up the party with sound systems & lights.",
-      img: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=80",
+      navigateTo: "/listing/DjEvent"
     },
     {
       title: "Creative Face Paints",
       desc: "Kids party face painting with fun themes.",
-      img: "https://images.unsplash.com/photo-1604927713423-7c4b9d28c2ef?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1604927713423-7c4b9d28c2ef?auto=format&fit=crop&w=800&q=80",
+      navigateTo: "/listing/facePainter"
     },
     {
       title: "Venue Vibes",
       desc: "Elegant event spaces for up to 200 guests.",
-      img: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=800&q=80",
+      navigateTo: '/listing/venueEventDetail'
     }
   ];
 
@@ -64,13 +69,17 @@ export default function LandingPage() {
 
       {/* How It Works */}
       <section className="grid md:grid-cols-3 gap-6 text-center my-10">
-        <Card className="shadow-xl">
-          <CardContent className="p-6">
-            <Sparkles className="mx-auto mb-3 text-blue-500" size={32} />
-            <h2 className="text-xl font-semibold mb-2">1. Find Providers</h2>
-            <p className="text-gray-600">Enter your event details to see local options.</p>
-          </CardContent>
-        </Card>
+        <div onClick={()=>{
+          navigate('/providers')
+        }}>
+          <Card className="shadow-xl">
+            <CardContent className="p-6">
+              <Sparkles className="mx-auto mb-3 text-blue-500" size={32} />
+              <h2 className="text-xl font-semibold mb-2">1. Find Providers</h2>
+              <p className="text-gray-600">Enter your event details to see local options.</p>
+            </CardContent>
+          </Card>
+        </div>
         <Card className="shadow-xl">
           <CardContent className="p-6">
             <ShoppingBag className="mx-auto mb-3 text-blue-500" size={32} />
@@ -133,17 +142,23 @@ export default function LandingPage() {
           <h3 className="text-2xl font-bold mb-6 text-blue-800">Popular Providers</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {providers.map((provider, i) => (
-              <Card key={i} className="shadow-md hover:shadow-lg transition">
-                <img
-                  src={provider.img}
-                  alt={provider.title}
-                  className="rounded-t-2xl h-40 w-full object-cover"
-                />
-                <CardContent className="p-4">
-                  <h4 className="font-semibold text-lg">{provider.title}</h4>
-                  <p className="text-gray-500 text-sm">{provider.desc}</p>
-                </CardContent>
-              </Card>
+              <div
+              key={i}
+              onClick={()=>{
+                navigate(`${provider.navigateTo}`)
+              }}>
+                <Card key={i} className="shadow-md hover:shadow-lg transition">
+                  <img
+                    src={provider.img}
+                    alt={provider.title}
+                    className="rounded-t-2xl h-40 w-full object-cover"
+                    />
+                  <CardContent className="p-4">
+                    <h4 className="font-semibold text-lg">{provider.title}</h4>
+                    <p className="text-gray-500 text-sm">{provider.desc}</p>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
