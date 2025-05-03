@@ -14,18 +14,22 @@ import VenueShopPage from './pages/venuePage'
 import MyDashboard from './pages/myDashboard'
 import VenueEventDetailPage from './pages/venueEventDetail'
 import FacePainterShopPage from './pages/facePainterShop'
+import SavedProvidersPage from './pages/savedProviders'
+import OrderConfirmationPage from './pages/orderConfirmationPage'
+
+
+// const user-pwd
 
 function App() {
   return (
-    // <div>
-    //   {/* <LandingPage/> */}  
-    // </div>
     <Router> 
       <Routes> 
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/authorization" element={<AuthPage/>} />
         <Route path="/myDashboard" element={<MyDashboard/>} />
+        <Route path="/savedProviders" element={<SavedProvidersPage/>} />
         <Route path="/checkout" element={<CheckoutPage/>} />
+        <Route path="/orderConfirmed" element={<OrderConfirmationPage/>} />
         <Route path="/providers" element={<Providers/>} />
         <Route path="/tandooriOrderDetail" element={<OrderDetailPage/>} />
         <Route path="/listing/tandooriDelights" element={<TandooriDelight/>}/>
@@ -35,6 +39,7 @@ function App() {
         <Route path="/listing/Photographer" element={<PhotographerEventDetailPage/>} />
         <Route path="/listing/venueShop" element={<VenueShopPage/>} />
         <Route path="/listing/venueEventDetail" element={<VenueEventDetailPage/>} />
+
         
       </Routes>
     </Router>

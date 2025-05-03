@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
   // Mock order summary
+  const navigate=useNavigate()
   const order = {
     title: "Tandoori Delights",
     price: "$300.00",
@@ -34,12 +36,14 @@ export default function CheckoutPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Processing payment for ${form.name} at ${form.address}`);
+    // alert(`Processing payment for ${form.name} at ${form.address}`);
+    navigate('/orderConfirmed')
     // TODO: integrate auth & payment APIs
   };
 
   return (
     <div className="min-h-screen bg-gray-50 px-6 py-10">
+        
       <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden grid md:grid-cols-2">
         {/* Left: Order Summary */}
         <div className="p-8 border-r">

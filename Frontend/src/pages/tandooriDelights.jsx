@@ -105,7 +105,12 @@ export default function TandooriDelight() {
               <a href="/checkout" className="bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700 inline-block">
                 Send Order Request
               </a>
-              <button className="text-blue-600 font-medium border border-blue-600 px-6 py-3 rounded-xl hover:bg-blue-50">
+              <button className="text-blue-600 font-medium border border-blue-600 px-6 py-3 rounded-xl hover:bg-blue-50"
+              onClick={()=>{
+                    // alert("Added to events")
+                    navigate('/myDashboard')
+                    } 
+                }>
                 Add to Event
               </button>
             </div>

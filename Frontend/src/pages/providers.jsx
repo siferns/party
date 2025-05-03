@@ -12,7 +12,8 @@ export default function Providers() {
       type: "Catering",
       price: "£300 for 20 guests",
       desc: "Delicious Indian cuisine for medium-sized events.",
-      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80",
+      navigateTo: '/listing/tandooriDelights'
     },
     {
       title: "Sushi Sensation",
@@ -33,14 +34,16 @@ export default function Providers() {
       type: "DJ",
       price: "£500 for 3 hours",
       desc: "Bring the party to life with pro DJ services.",
-      img: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=80",
+      navigateTo: "/listing/DjEvent"
     },
     {
       title: "Moments Captured",
       type: "Photography",
       price: "£250 for 2 hours",
       desc: "Professional photography to capture every moment.",
-      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80"
+      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+      navigateTo: '/listing/Photographer'
     }
   ];
 
@@ -116,7 +119,10 @@ export default function Providers() {
                   <p className="text-sm text-gray-600">{result.type}</p>
                   <p className="text-gray-500 text-sm mt-1">{result.desc || "No description available."}</p>
                   <p className="text-blue-600 font-semibold mt-2">{result.price || "Contact for pricing"}</p>
-                  <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                  <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+                  onClick={()=>{
+                    navigate(`${result.navigateTo}`)
+                  }}>
                     View Package
                   </button>
                 </div>

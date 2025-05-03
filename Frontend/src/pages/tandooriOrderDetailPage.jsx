@@ -63,8 +63,8 @@ export default function OrderDetailPage() {
 
         <div className="max-w-4xl mx-auto px-6 py-10">
             <button onClick={() =>{
-                alert('Back to Dashboard')
-                navigate('/')
+                // alert('Back to Dashboard')
+                navigate('/myDashboard')
             }} className="text-blue-600 hover:underline mb-4">
             ← Back to Dashboard
             </button>
