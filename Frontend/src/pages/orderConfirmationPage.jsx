@@ -30,7 +30,7 @@ export default function OrderConfirmationPage() {
         <a href="/" className="text-2xl font-bold text-blue-800">Evoo</a>
         <div className="space-x-4 text-sm">
           <span className="text-gray-700">Hi, Priya</span>
-          <a href="/dashboard" className="text-blue-700 hover:underline">Dashboard</a>
+          <a href="/myDashboard" className="text-blue-700 hover:underline">Dashboard</a>
           <button className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-full">Logout</button>
         </div>
       </nav>
