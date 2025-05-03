@@ -70,9 +70,9 @@ export default function LandingPage() {
       {/* How It Works */}
       <section className="grid md:grid-cols-3 gap-6 text-center my-10">
         <div onClick={()=>{
-          navigate('/providers')
+          // navigate('/providers')
         }}>
-          <Card className="shadow-xl">
+          <Card>
             <CardContent className="p-6">
               <Sparkles className="mx-auto mb-3 text-blue-500" size={32} />
               <h2 className="text-xl font-semibold mb-2">1. Find Providers</h2>
@@ -80,14 +80,14 @@ export default function LandingPage() {
             </CardContent>
           </Card>
         </div>
-        <Card className="shadow-xl">
+        <Card >
           <CardContent className="p-6">
             <ShoppingBag className="mx-auto mb-3 text-blue-500" size={32} />
             <h2 className="text-xl font-semibold mb-2">2. Book Instantly</h2>
             <p className="text-gray-600">Choose fixed-price packages and book in minutes.</p>
           </CardContent>
         </Card>
-        <Card className="shadow-xl">
+        <Card >
           <CardContent className="p-6">
             <PartyPopper className="mx-auto mb-3 text-blue-500" size={32} />
             <h2 className="text-xl font-semibold mb-2">3. Enjoy Your Event</h2>
