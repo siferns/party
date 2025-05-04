@@ -214,11 +214,11 @@ export default function DashboardPage() {
       status: "Partially Booked",
       budget: 1500,
       ordered: [
-        { title: "Tandoori Delights", type: "Catering", price: "£300", status: "Confirmed",navigateTo:"/tandooriOrderDetail" },
-        { title: "Venue Vibes", type: "Venue", price: "£800", status: "Pending" }
-      ],
-      pending: [
-        { title: "DJ Sonic Boom", type: "DJ", price: "£500" },
+          { title: "Venue Vibes", type: "Venue", price: "£800", status: "Pending" },
+          { title: "DJ Sonic Boom", type: "DJ", price: "£500",status:"Confirmed" },
+        ],
+        pending: [
+        { title: "Tandoori Delights", type: "Catering", price: "£300",navigateTo:"/tandooriOrderDetail" },
         { title: "Moments Captured", type: "Photography", price: "£250" }
       ]
     },
@@ -229,8 +229,8 @@ export default function DashboardPage() {
       status: "Confirmed",
       budget: 1000,
       ordered: [
-        { title: "Sushi Sensation", type: "Catering", price: "£400", status: "Confirmed" },
-        { title: "Creative Face Paints", type: "Entertainment", price: "£150", status: "Confirmed" }
+        { title: "Sushi Sensation", type: "Catering", price: "£400", status: "Confirmed" , navigateTo:"#"},
+        { title: "Creative Face Paints", type: "Entertainment", price: "£150", status: "Confirmed", navigateTo:"/listing/facePainter"}
       ],
       pending: []
     }
@@ -260,19 +260,95 @@ export default function DashboardPage() {
 
   // Render confirmed events
   const renderPrevious = () => (
-    <div className="grid gap-6">
-      {events.filter(e => e.status === 'Confirmed').map(event => (
-        <Card key={event.id} className="shadow">
-          <CardContent className="p-4 flex justify-between items-center">
-            <div>
-              <h3 className="text-lg font-semibold text-blue-800">{event.name}</h3>
-              <p className="text-sm text-gray-600"><CalendarDays className="inline-block mr-1" />{event.date}</p>
-            </div>
-            <span className="px-2 py-1 rounded-full bg-green-100 text-green-800 text-xs">{event.status}</span>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+    <div className="space-y-8">
+        {events
+            .filter(e => e.status === "Confirmed")
+            .map((event, idx) => {
+            const orderedTotal = event.ordered.reduce((sum, item) => sum + parsePrice(item.price), 0);
+            const combinedTotal = orderedTotal; // no pending in past
+            const usedPercent = Math.min((combinedTotal / event.budget) * 100, 100);
+
+            return (
+                <Card key={event.id} className="shadow">
+                <CardContent className="p-6">
+                    {/* Header */}
+                    <div className="flex justify-between items-center mb-4">
+                    <div>
+                        <h3
+                        className="text-xl font-semibold text-blue-800 hover:underline cursor-pointer"
+                        onClick={() => alert(`View details for ${event.name}`)}
+                        >
+                        📅 {event.name}
+                        </h3>
+                        <p className="text-sm text-gray-500">
+                        <CalendarDays className="inline-block mr-1" />
+                        {event.date}
+                        </p>
+                    </div>
+                    <span
+                        className={`px-2 py-1 rounded-full text-sm ${
+                        event.status === "Confirmed"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-yellow-100 text-yellow-800"
+                        }`}
+                    >
+                        {event.status}
+                    </span>
+                    </div>
+
+                    {/* Budget Bar */}
+                    <div className="mb-4">
+                    <p>
+                        Budget: <span className="font-semibold text-blue-600">£{event.budget}</span>
+                    </p>
+                    <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                        <div
+                        className="bg-green-500 h-2 rounded-full"
+                        style={{ width: `${usedPercent}%` }}
+                        />
+                    </div>
+                    <p className="text-xs text-gray-500 mt-1">
+                        £{combinedTotal} of £{event.budget} used ({usedPercent.toFixed(0)}%)
+                    </p>
+                    </div>
+
+                    {/* Providers List (formerly Ordered Services) */}
+                    <div>
+                    <h4 className="text-lg font-semibold text-blue-800 mb-2">
+                        ✔️ Providers
+                    </h4>
+                    <div className="space-y-2">
+                        {event.ordered.map((item, i) => (
+                        <div
+                            key={i}
+                            className="flex justify-between items-center bg-blue-50 p-3 rounded cursor-pointer hover:bg-blue-100"
+                            onClick={() => navigate(item.navigateTo)}
+                        >
+                            <div>
+                            <p className="font-medium text-gray-700">{item.title}</p>
+                            <p className="text-sm text-gray-500">{item.type}</p>
+                            </div>
+                            <div className="text-right">
+                            <p className="font-semibold text-blue-700">{item.price}</p>
+                            <p
+                                className={`text-sm ${
+                                item.status === "Confirmed"
+                                    ? "text-green-600"
+                                    : "text-yellow-600"
+                                }`}
+                            >
+                                {item.status}
+                            </p>
+                            </div>
+                        </div>
+                        ))}
+                    </div>
+                    </div>
+                </CardContent>
+                </Card>
+            );
+            })}
+        </div>
   );
 
   // Render events with pending services, full MyDashboard UI with budget bar
@@ -337,7 +413,10 @@ export default function DashboardPage() {
                 <div>
                   <h4 className="text-lg font-semibold text-blue-800 mb-2">⏳ Pending Services</h4>
                   {event.pending.map((item, i) => (
-                    <div key={i} className="flex justify-between items-center border p-3 rounded mb-2">
+                    <div key={i} className="flex justify-between items-center border p-3 rounded mb-2"
+                    onClick={()=>{
+                        navigate(`${item.navigateTo}`)
+                    }}>
                       <div>
                         <p className="font-medium text-gray-700">{item.title}</p>
                         <p className="text-sm text-gray-500">{item.type}</p>

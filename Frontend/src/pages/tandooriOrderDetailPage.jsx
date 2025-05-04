@@ -27,7 +27,7 @@ export default function OrderDetailPage() {
             { item: "Chana Masala (Chickpea Curry)", quantity: "1 tray" },
             { item: "Steamed Basmati Rice", quantity: "1 tray" },
             { item: "Naan Bread", quantity: "40 pieces" }
-        ],
+        ], 
         desserts: [
             { item: "Gulab Jamun", quantity: "40 pieces" },
             { item: "Mango Kulfi", quantity: "20 sticks" }
