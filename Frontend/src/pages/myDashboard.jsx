@@ -15,7 +15,7 @@ export default function DashboardPage() {
       name: "25th Anniversary",
       date: "2025-05-12",
       status: "Partially Booked",
-      budget: 1500,
+      budget: 1000,
       ordered: [
           { title: "Tandoori Delights", type: "Catering", price: "£300",status:"Confirmed",navigateTo:"/tandooriOrderDetail" },
           // { title: "Venue Vibes", type: "Venue", price: "£800", status: "Pending" },
@@ -158,9 +158,10 @@ export default function DashboardPage() {
   const renderPending = () => (
     <div className="space-y-8">
       {events.map((event, idx) => event.pending.length > 0 && (() => {
-        const orderedTotal = event.ordered.reduce((sum, item) => sum + parsePrice(item.price), 0);
-        const pendingTotal = event.pending.reduce((sum, item) => sum + parsePrice(item.price), 0);
-        const combinedTotal = orderedTotal + pendingTotal;
+        // const orderedTotal = event.ordered.reduce((sum, item) => sum + parsePrice(item.price), 0);
+        // const pendingTotal = event.pending.reduce((sum, item) => sum + parsePrice(item.price), 0);
+        // const combinedTotal = orderedTotal + pendingTotal;
+        const combinedTotal=300
         const usedPercent = Math.min((combinedTotal / event.budget) * 100, 100);
 
         return (
