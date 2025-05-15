@@ -80,6 +80,12 @@ export default function OrderConfirmationPage() {
             </div>
           </div>
           <p className="text-lg font-semibold text-blue-800">Total Paid: {order.totalPrice}</p>
+          <button
+            onClick={() => window.location.href = "/myDashboard"}
+            className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-semibold"
+          >
+            Back to Dashboard
+          </button>
         </div>
       </div>
     </div>

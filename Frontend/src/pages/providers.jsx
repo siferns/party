@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import CustomDatePicker from "../componenets/ui/datePicker";
+import sushiSensationImg from '../assets/sushiSensation.png';
+import tacofiesta from "../assets/tacofiesta.png"
 
 export default function Providers() {
   const [activeTab, setActiveTab] = useState("All");
   const navigate=useNavigate();
+  const now = new Date();
+  const currentTime = now.toTimeString().slice(0, 5); // "HH:MM"
 
   const results = [
     {
@@ -20,14 +24,14 @@ export default function Providers() {
       type: "Catering",
       price: "£400 for 25 guests",
       desc: "Freshly prepared sushi platters and bento boxes.",
-      img: "https://images.unsplash.com/photo-1579872458663-8adf5a86b5b5?auto=format&fit=crop&w=800&q=80"
+      img: sushiSensationImg
     },
     {
       title: "Taco Fiesta",
       type: "Catering",
       price: "£250 for 20 guests",
       desc: "Build-your-own taco bar with a variety of fillings.",
-      img: "https://images.unsplash.com/photo-1600891964160-3b8a2df4d9b3?auto=format&fit=crop&w=800&q=80"
+      img: tacofiesta
     },
     {
       title: "DJ Sonic Boom",
@@ -87,15 +91,49 @@ export default function Providers() {
       <div className="grid md:grid-cols-[280px_1fr] gap-6 px-6 py-6">
         <div className="bg-blue-50 p-4 rounded-xl shadow-sm">
           <h2 className="text-lg font-semibold mb-4 text-blue-800">Change Event Details</h2>
-          <form className="grid gap-3">
-            <input className="pl-4 py-2 rounded border" type="text" placeholder="Postcode" />
-            <input className="pl-4 py-2 rounded border" type="number" placeholder="Number of Guests" />
-            <input className="pl-4 py-2 rounded border" type="time" placeholder="Time" />
-            <input className="pl-4 py-2 rounded border" type="date" placeholder="Date" />
-            <button className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">
-              Update Search
-            </button>
-          </form>
+          <div className="w-full max-w-md mx-auto">
+            <form className="grid gap-3">
+              <div className="flex items-center gap-3">
+                <label className="w-24 text-sm font-semibold text-left">Postcode:</label>
+                <input
+                  className="w-full pl-3 py-1.5 rounded-sm border border-gray-600 text-sm font-semibold"
+                  type="text"
+                  placeholder="postcode"
+                  defaultValue="121002"
+                />
+              </div>
+
+              <div className="flex items-center gap-3">
+                <label className="w-24 text-sm font-semibold text-left">Guests:</label>
+                <input
+                  className="w-full pl-3 py-1.5 rounded-sm border border-gray-600 text-sm font-semibold"
+                  type="number"
+                  placeholder="No. of Guests"
+                  defaultValue="5"
+                />
+              </div>
+
+              <div className="flex items-center gap-3">
+                <label className="w-24 text-sm font-semibold text-left">Time:</label>
+                <input
+                  className="w-full pl-3 py-1.5 rounded-sm border border-gray-600 text-sm font-semibold"
+                  type="time"
+                  placeholder="Time"
+                  defaultValue={currentTime}
+                />
+              </div>
+
+              <div className="flex items-center gap-3">
+                <label className="w-24 text-sm font-semibold text-left">Date:</label>
+                <CustomDatePicker />
+              </div>
+
+              <button className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded text-sm font-semibold">
+                Update Search
+              </button>
+            </form>
+        </div>
+
         </div>
 
         <div>
