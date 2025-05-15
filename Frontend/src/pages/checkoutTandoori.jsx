@@ -43,6 +43,14 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 px-6 py-10">
+      <nav className="flex items-center justify-between px-6 py-4 ">
+        <a href="/" className="text-2xl font-bold text-blue-800">Evoo</a>
+        <div className="space-x-4 text-sm">
+            <p onClick={()=>navigate('/#')} className="inline-block text-blue-700 hover:underline">Become a Provider</p>
+            <p onClick={()=>navigate('/authorization')} className="inline-block text-blue-700 hover:underline">Login</p>
+            <p onClick={()=>navigate('/authorization')} className="inline-block text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full">Sign Up</p>
+        </div>
+      </nav>
         
       <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden grid md:grid-cols-2">
         {/* Left: Order Summary */}
@@ -69,7 +77,7 @@ export default function CheckoutPage() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                required
+                // required
                 className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -80,7 +88,7 @@ export default function CheckoutPage() {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                required
+                // required
                 className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -91,7 +99,7 @@ export default function CheckoutPage() {
                 name="password"
                 value={form.password}
                 onChange={handleChange}
-                required
+                // required
                 className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -102,7 +110,7 @@ export default function CheckoutPage() {
                 name="address"
                 value={form.address}
                 onChange={handleChange}
-                required
+                // required
                 className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -115,7 +123,7 @@ export default function CheckoutPage() {
                 value={form.cardNumber}
                 onChange={handleChange}
                 placeholder="1234 5678 9012 3456"
-                required
+                // required
                 className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -128,7 +136,7 @@ export default function CheckoutPage() {
                   value={form.expiry}
                   onChange={handleChange}
                   placeholder="MM/YY"
-                  required
+                  // required
                   className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
@@ -140,7 +148,7 @@ export default function CheckoutPage() {
                   value={form.cvv}
                   onChange={handleChange}
                   placeholder="123"
-                  required
+                  // required
                   className="mt-1 block w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
