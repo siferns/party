@@ -10,12 +10,11 @@ export default function OrderDetailPage() {
         price: "£300 for 20 guests",
         status: "Accepted",
         gallery: [
-        "https://images.unsplash.com/photo-1627991984547-df26619c9b72?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1591978031649-f4d5a5a4b914?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1597279835034-baa8f6043c6e?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1617191511690-0cbb0e15a664?auto=format&fit=crop&w=800&q=80"
+            "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=400&q=80"
         ],
-        image: "https://images.unsplash.com/photo-1627991984547-df26619c9b72?auto=format&fit=crop&w=800&q=80",
+        image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=400&q=80",
         description: "Authentic Indian cuisine package including starters, mains, and desserts.",
         details: {
         starters: [

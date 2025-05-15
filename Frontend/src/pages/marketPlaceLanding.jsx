@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Button } from "../componenets/ui/Button";
+// import { Button } from "../componenets/ui/Button";
 import { Input } from "../componenets/ui/input";
 import { Card ,CardContent } from "../componenets/ui/card";
 import { Switch } from "../componenets/ui/switch"; 
 import { Sparkles, ShoppingBag, PartyPopper, MapPin, Users, Clock, CalendarDays } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import facePaint from "../assets/creativeFacePaint.png"
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ export default function LandingPage() {
     {
       title: "Creative Face Paints",
       desc: "Kids party face painting with fun themes.",
-      img: "https://images.unsplash.com/photo-1604927713423-7c4b9d28c2ef?auto=format&fit=crop&w=800&q=80",
+      img: facePaint  ,
       navigateTo: "/listing/facePainter"
     },
     {
@@ -120,7 +121,11 @@ export default function LandingPage() {
           <CardContent className="p-6">
             <PartyPopper className="mx-auto mb-3 text-blue-500" size={32} />
             <h2 className="text-xl font-semibold mb-2">3. Enjoy Your Event</h2>
-            <p className="text-gray-600">Get everything organized with one dashboard.</p>
+
+            <p onClick={()=>{navigate('/saved-PROVIDERS')}} 
+            className="text-gray-600">Get everything organized with one dashboard.</p>
+
+            
           </CardContent>
         </Card>
       </section>
@@ -129,39 +134,56 @@ export default function LandingPage() {
       <section className="max-w-7xl mx-auto mt-10 grid md:grid-cols-[320px_1fr] gap-6 items-start">
         {/* Event Form */}
         <div className="bg-blue-100 p-4 rounded-2xl shadow-xl">
-          <h3 className="text-2xl font-semibold mb-4 text-blue-900">Start Planning Your Event</h3>
-          <form className="grid gap-3">
-            <div className="relative">
-              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-              <Input className="pl-10" type="text" placeholder="Postcode" />
-            </div>
-            <div className="relative">
-              <Users className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-              <Input className="pl-10" type="number" placeholder="Number of Guests" />
-            </div>
-            <div className="relative">
-              <Clock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-              <Input className="pl-10" type="time" placeholder="Time" />
-            </div>
-            <div className="relative">
-              <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-              <Input className="pl-10" type="date" placeholder="Date" />
-            </div>
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Willing to Pick Up Food?</label>
-              <div>
-                <Switch /> 
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => navigate('/providers')}
-              className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md"
-            >
-              Find Providers
-            </button>
-          </form>
-        </div>
+  <h3 className="text-2xl font-semibold mb-4 text-blue-900">Start Planning Your Event</h3>
+  <form className="grid gap-3">
+    <div className="relative">
+      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+      <Input
+        className="w-full pl-10 pr-3 py-2 border border-gray-600 rounded-sm focus:outline-none focus:border-blue-600"
+        type="text"
+        placeholder="Postcode"
+      />
+    </div>
+    <div className="relative">
+      <Users className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+      <Input
+        className="w-full pl-10 pr-3 py-2 border border-gray-600 rounded-sm focus:outline-none focus:border-blue-600"
+        type="number"
+        placeholder="Number of Guests"
+      />
+    </div>
+    <div className="relative">
+      <Clock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+      <Input
+        className="w-full pl-10 pr-3 py-2 border border-gray-600 rounded-sm focus:outline-none focus:border-blue-600"
+        type="time"
+        placeholder="Time"
+      />
+    </div>
+    <div className="relative">
+      <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+      <Input
+        className="w-full pl-10 pr-3 py-2 border border-gray-600 rounded-sm focus:outline-none focus:border-blue-600"
+        type="date"
+        placeholder="Date"
+      />
+    </div>
+    <div className="flex items-center justify-between">
+      {/* <label className="text-sm font-medium">Willing to Pick Up Food?</label>
+      <div>
+        <Switch />
+      </div> */}
+    </div>
+    <button
+      type="button"
+      onClick={() => navigate('/providers')}
+      className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 rounded-md"
+    >
+      Update Search
+    </button>
+  </form>
+</div>
+
 
         {/* Popular Providers */}
         <div>
